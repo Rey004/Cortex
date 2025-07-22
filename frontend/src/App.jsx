@@ -1,15 +1,14 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider  } from 'react-router-dom'
-import './App.css'
 
 // Layout - Outlet
 import Layout from './layout/layout.jsx'
 
 // Pages
-import Error from './pages/Error.jsx'
-import Home from './pages/Home.jsx'
-import Generator from './pages/Generator.jsx'
-import Gallery from './pages/Gallery.jsx'
+import Error from './pages/Error_Page/Error.jsx'
+import Home from './pages/Home_Page/Home.jsx'
+import Generator from './pages/Generator_Page/Generator.jsx'
+import Gallery from './pages/Gallery_Page/Gallery.jsx'
 
 const Router= createBrowserRouter([
   {

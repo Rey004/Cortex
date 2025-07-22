@@ -1,6 +1,7 @@
 import React from 'react'
+import './error.css'
 
-const Generator = () => {
+const Error = () => {
   return (
     <div>
       
@@ -8,4 +9,4 @@ const Generator = () => {
   )
 }
 
-export default Generator
+export default Error
