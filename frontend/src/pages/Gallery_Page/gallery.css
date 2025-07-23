@@ -1,0 +1,430 @@
+/* Gallery Page Styles */
+.gallery-page {
+    min-height: 100vh;
+    background: #000000;
+    position: relative;
+    overflow-x: hidden;
+    padding-top: 100px; /* Space for fixed header */
+}
+
+/* Background Effects - Enhanced Grid Pattern */
+.gallery-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        /* Subtle geometric grid */
+        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        /* Diagonal accent lines */
+        linear-gradient(45deg, transparent 45%, rgba(59, 130, 246, 0.01) 50%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, rgba(147, 197, 253, 0.008) 50%, transparent 55%),
+        /* Ambient glow spots */
+        radial-gradient(circle at 15% 25%, rgba(59, 130, 246, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(147, 197, 253, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 35% 85%, rgba(96, 165, 250, 0.025) 0%, transparent 35%),
+        radial-gradient(circle at 95% 15%, rgba(59, 130, 246, 0.02) 0%, transparent 30%);
+    background-size: 
+        100px 100px,
+        100px 100px,
+        200px 200px,
+        200px 200px,
+        400px 400px,
+        350px 350px,
+        300px 300px,
+        250px 250px;
+    background-position: 
+        -1px -1px,
+        -1px -1px,
+        0 0,
+        0 0,
+        0 0,
+        0 0,
+        0 0,
+        0 0;
+    z-index: 1;
+    animation: backgroundShift 30s ease-in-out infinite alternate;
+}
+
+/* Floating Geometric Elements */
+.gallery-page::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.1) 0%,
+        rgba(147, 197, 253, 0.05) 100%
+    );
+    border-radius: 30% 70% 70% 30%;
+    filter: blur(1px);
+    z-index: 1;
+    animation: floatAndMorph 20s ease-in-out infinite;
+}
+
+/* Additional Decorative Elements */
+.gallery-container::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(
+        45deg,
+        rgba(147, 197, 253, 0.08) 0%,
+        rgba(59, 130, 246, 0.04) 100%
+    );
+    border-radius: 50%;
+    filter: blur(2px);
+    z-index: 1;
+    animation: slowFloat 25s ease-in-out infinite;
+}
+
+.gallery-container::after {
+    content: '';
+    position: absolute;
+    bottom: 15%;
+    left: 8%;
+    width: 60px;
+    height: 60px;
+    background: rgba(96, 165, 250, 0.06);
+    border-radius: 20px;
+    transform: rotate(45deg);
+    z-index: 1;
+    animation: rotateFloat 18s linear infinite;
+}
+
+/* Scan Line Effect */
+.scan-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(59, 130, 246, 0.6) 50%,
+        transparent 100%
+    );
+    z-index: 100;
+    animation: scanLine 8s linear infinite;
+    pointer-events: none;
+}
+
+/* Corner Decorations */
+.corner-decoration {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.corner-decoration.top-left {
+    top: 120px;
+    left: 20px;
+    border-top: 2px solid rgba(59, 130, 246, 0.3);
+    border-left: 2px solid rgba(59, 130, 246, 0.3);
+    border-radius: 8px 0 0 0;
+    animation: cornerGlow 4s ease-in-out infinite alternate;
+}
+
+.corner-decoration.top-right {
+    top: 120px;
+    right: 20px;
+    border-top: 2px solid rgba(147, 197, 253, 0.25);
+    border-right: 2px solid rgba(147, 197, 253, 0.25);
+    border-radius: 0 8px 0 0;
+    animation: cornerGlow 4s ease-in-out infinite alternate 2s;
+}
+
+.gallery-container {
+    max-width: 2000px; /* Significantly increased for very wide layouts */
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+    min-height: calc(100vh - 100px); /* Account for header space */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Gallery Header */
+.gallery-header {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.gallery-header h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    text-align: center;
+    position: relative;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Highlight for "AI Art" */
+.gallery-header h1 .highlight {
+    background: linear-gradient(
+        135deg,
+        #3b82f6 0%,
+        #1d4ed8 50%,
+        #2563eb 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.3));
+}
+
+.gallery-header h1::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(
+        ellipse,
+        rgba(59, 130, 246, 0.1) 0%,
+        transparent 70%
+    );
+    z-index: -1;
+    animation: breathe 4s ease-in-out infinite;
+}
+
+.gallery-header p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #d1d5db;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.gallery-header p .accent {
+    color: #93c5fd;
+    font-weight: 500;
+    position: relative;
+}
+
+/* Search Section */
+.search-section {
+    position: relative;
+    z-index: 2;
+    padding: 0 2rem 2rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Gallery Content */
+.gallery-content {
+    position: relative;
+    z-index: 2;
+    min-height: 60vh;
+}
+
+/* Animations */
+@keyframes backgroundShift {
+    0% {
+        background-position: 
+            -1px -1px,
+            -1px -1px,
+            0 0,
+            0 0,
+            0 0,
+            0 0,
+            0 0,
+            0 0;
+    }
+    100% {
+        background-position: 
+            -51px -51px,
+            -51px -51px,
+            100px 100px,
+            -100px -100px,
+            200px 200px,
+            -150px 150px,
+            150px -100px,
+            -100px 100px;
+    }
+}
+
+@keyframes floatAndMorph {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+        border-radius: 30% 70% 70% 30%;
+    }
+    25% {
+        transform: translateY(-20px) rotate(90deg);
+        border-radius: 70% 30% 30% 70%;
+    }
+    50% {
+        transform: translateY(0px) rotate(180deg);
+        border-radius: 40% 60% 60% 40%;
+    }
+    75% {
+        transform: translateY(-15px) rotate(270deg);
+        border-radius: 60% 40% 40% 60%;
+    }
+    100% {
+        transform: translateY(0px) rotate(360deg);
+        border-radius: 30% 70% 70% 30%;
+    }
+}
+
+@keyframes slowFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-25px) rotate(180deg);
+    }
+}
+
+@keyframes rotateFloat {
+    0% {
+        transform: rotate(45deg) translateY(0px);
+    }
+    50% {
+        transform: rotate(225deg) translateY(-10px);
+    }
+    100% {
+        transform: rotate(405deg) translateY(0px);
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes cornerGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+        opacity: 0.3;
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        opacity: 0.8;
+    }
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .gallery-header h1 {
+        font-size: 3.5rem;
+    }
+    
+    .gallery-header p {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    
+    .gallery-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-page {
+        padding-top: 120px; /* More space for mobile header */
+    }
+    
+    .gallery-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .gallery-header p {
+        font-size: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .gallery-container {
+        padding: 1rem;
+    }
+    
+    .corner-decoration {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .corner-decoration.top-left,
+    .corner-decoration.top-right {
+        top: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-page {
+        padding-top: 140px; /* Even more space for mobile */
+    }
+    
+    .gallery-header h1 {
+        font-size: 2rem;
+    }
+    
+    .gallery-header {
+        padding: 1rem 0;
+        margin-bottom: 1rem;
+    }
+    
+    .gallery-container {
+        padding: 0.5rem;
+    }
+    
+    .corner-decoration {
+        display: none;
+    }
+}
