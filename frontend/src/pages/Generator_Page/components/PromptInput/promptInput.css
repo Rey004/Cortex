@@ -1,0 +1,272 @@
+/* Prompt Input Section */
+.prompt-input-section {
+    padding: 2rem 0;
+    width: 75%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.prompt-container {
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.prompt-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.prompt-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.input-field-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.prompt-input {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 100%
+    );
+    backdrop-filter: blur(15px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    resize: none;
+    outline: none;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    box-sizing: border-box;
+}
+
+.prompt-input:focus {
+    border-color: rgba(59, 130, 246, 0.8);
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.1) 0%,
+        rgba(147, 197, 253, 0.05) 100%
+    );
+    box-shadow: 
+        0 12px 35px rgba(59, 130, 246, 0.25),
+        0 0 0 4px rgba(59, 130, 246, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.prompt-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.prompt-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+.input-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(59, 130, 246, 0.1) 50%,
+        rgba(147, 197, 253, 0.15) 100%
+    );
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    border-radius: 0 20px 20px 0;
+}
+
+.prompt-input:focus + .input-decoration {
+    opacity: 1;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(59, 130, 246, 0.2) 50%,
+        rgba(147, 197, 253, 0.25) 100%
+    );
+}
+
+/* Generate Button Container */
+.prompt-form button {
+    align-self: center;
+    min-width: 200px;
+    position: relative;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.8;
+    }
+}
+
+/* Floating elements */
+.prompt-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(
+        circle,
+        rgba(59, 130, 246, 0.3) 0%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.prompt-container::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(
+        circle,
+        rgba(147, 197, 253, 0.4) 0%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .prompt-input-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .prompt-container {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+    
+    .prompt-input {
+        padding: 1.2rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 16px;
+    }
+    
+    .prompt-form button {
+        min-width: 160px;
+    }
+    
+    .prompt-label {
+        font-size: 1.1rem;
+    }
+    
+    .input-decoration {
+        border-radius: 0 16px 16px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .prompt-input-section {
+        padding: 1rem 0.8rem;
+    }
+    
+    .prompt-container {
+        padding: 1.5rem 1rem;
+        border-radius: 16px;
+    }
+    
+    .prompt-form {
+        gap: 1.5rem;
+    }
+    
+    .prompt-input {
+        padding: 1rem 1.2rem;
+        font-size: 0.95rem;
+        border-radius: 14px;
+    }
+    
+    .prompt-form button {
+        min-width: 140px;
+    }
+    
+    .input-field-container {
+        border-radius: 14px;
+    }
+    
+    .input-decoration {
+        border-radius: 0 14px 14px 0;
+    }
+    
+    .prompt-label {
+        font-size: 1rem;
+    }
+}
